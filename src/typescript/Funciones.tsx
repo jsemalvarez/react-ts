@@ -2,15 +2,15 @@
 
 export const Funciones = () => {
 
-    const sumar = ():number => {
-        return 5
+    const sumar = ( a:number, b:number):number => {
+        return a + b
     }
 
 
     return (
         <>
             <h3>Funciones</h3>
-            <span> El resultado es: { sumar() }</span>
+            <span> El resultado es: { sumar( 5 , 7 ) }</span>
         </>
     )
 }
