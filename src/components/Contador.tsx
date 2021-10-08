@@ -3,6 +3,7 @@ import { useState } from "react"
 export const Contador = () => {
 
     const [valor, setValor] = useState(0)
+    // const [valor, setValor] = useState<number>(0) // si quisieramos definir el tipo de dato
 
     const acumular = ( numero: number ) => {
         setValor( valor + numero )
