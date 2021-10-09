@@ -2,8 +2,8 @@
 // import { ObjetosLiterales } from "./typescript/ObjetosLiterales"
 // import { Funciones } from "./typescript/Funciones"
 // import { Contador } from "./components/Contador"
-
-import { ContadorConHook } from "./components/ContadorConHook"
+// import { ContadorConHook } from "./components/ContadorConHook"
+import { Login } from "./components/Login"
 
 const App = () => {
 
@@ -11,7 +11,7 @@ const App = () => {
     <div className="mt-2">
       <h2>Introduccion a TS - React</h2>
       <hr />
-      <ContadorConHook />
+      <Login />
 
     </div>
   )
