@@ -1,36 +1,10 @@
-import { useEffect, useRef, useState } from "react"
-import { reqResApi } from "../api/reqRes"
-import { ReqResListado, Usuario } from "../interfaces/reqRes"
+import { useUsuarios } from "../hooks/useUsuarios"
+import { Usuario } from "../interfaces/reqRes"
 
 export const Usuarios = () => {
 
-    const [usuarios, setUsuarios] = useState<Usuario[]>([])
+    const { usuarios, paginaSiguiente, paginaAnterior } = useUsuarios()
 
-    const paginaRef = useRef(1)
-
-    useEffect( () => {
-        cargarUsuarios()
-    }, [])
-
-
-    const cargarUsuarios = () => {
-        reqResApi.get<ReqResListado>('/users', {
-            params:{
-                page: paginaRef.current
-            }
-        })
-        .then( res => {
-            // res.data es un atributo de axios y es de tipo AxiosResponse
-
-            if( res.data.data.length > 0 ){
-                setUsuarios( res.data.data )
-                paginaRef.current++
-            }else{
-                alert('No hay mas registros')
-            }
-        })
-        .catch( console.log )
-    }
 
     const renderItem = ( {id, first_name, last_name, email, avatar}: Usuario) => {
         return(
@@ -70,10 +44,19 @@ export const Usuarios = () => {
                 </tbody>
             </table>
 
-            <button 
-                className="btn btn-primary"
-                onClick={ cargarUsuarios }
-            >Siguientes</button>
+            <div style={{display:'flex', justifyContent:'center', alignItems:'center'}}>
+                <button 
+                    className="btn btn-primary m-2"
+                    onClick={ paginaAnterior }
+                >Anteriores</button>
+
+                <button 
+                    className="btn btn-primary m-2"
+                    onClick={ paginaSiguiente }
+                >Siguientes</button>
+            </div>
+
+            
         </>
     )
 }
